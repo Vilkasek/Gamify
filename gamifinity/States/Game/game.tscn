@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvq1uf43ksiaq"]
+
+[ext_resource type="PackedScene" uid="uid://0kcfv6b5owl5" path="res://Utils/UI/ui.tscn" id="1_huyuk"]
+[ext_resource type="Script" uid="uid://8aw7510kpc7p" path="res://States/Game/game.gd" id="1_l7vq2"]
+[ext_resource type="PackedScene" uid="uid://bctjeyvxgvpa5" path="res://Actors/Player/player.tscn" id="2_u0iuf"]
+[ext_resource type="PackedScene" uid="uid://b3cfodj23ntmv" path="res://Actors/Enemy/enemy.tscn" id="3_l7vq2"]
+[ext_resource type="Texture2D" uid="uid://d3aeve0d6ubkk" path="res://Decorations/Pathway.png" id="4_m4pxt"]
+[ext_resource type="Texture2D" uid="uid://bjm7hxq56s48m" path="res://Decorations/Background.png" id="5_rixrl"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_l7vq2")
+enemy = ExtResource("3_l7vq2")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(320.5, 180)
+scale = Vector2(6.41, 3.6)
+texture = ExtResource("5_rixrl")
+
+[node name="Pathway" type="Sprite2D" parent="."]
+position = Vector2(402.5, 181)
+scale = Vector2(4.77, 3.62)
+texture = ExtResource("4_m4pxt")
+
+[node name="UI" parent="." instance=ExtResource("1_huyuk")]
+
+[node name="Player" parent="." instance=ExtResource("2_u0iuf")]
+position = Vector2(455, 220)
+
+[node name="EnemySpawn" type="Marker2D" parent="."]
+position = Vector2(484, 157)
+
+[node name="EnemySpawn2" type="Marker2D" parent="."]
+position = Vector2(551, 157)
+
+[node name="EnemySpawn3" type="Marker2D" parent="."]
+position = Vector2(517, 190)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

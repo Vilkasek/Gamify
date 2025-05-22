@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://0kcfv6b5owl5"]
+
+[ext_resource type="Script" uid="uid://brhwkdjmn6rl2" path="res://Utils/UI/ui.gd" id="1_cerxw"]
+[ext_resource type="PackedScene" uid="uid://cg7fyn0vt38ba" path="res://Utils/Task/task.tscn" id="2_kvvup"]
+[ext_resource type="Texture2D" uid="uid://dbdjvmdubyrpb" path="res://Utils/UI/Bars/bar_exp_empty.png" id="3_wf6ms"]
+[ext_resource type="Texture2D" uid="uid://pihljdiiym2i" path="res://Utils/UI/Bars/bar_exp.png" id="4_y1qsn"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_cerxw")
+task = ExtResource("2_kvvup")
+
+[node name="Exp" type="TextureProgressBar" parent="."]
+offset_left = 424.0
+offset_top = 286.0
+offset_right = 552.0
+offset_bottom = 303.0
+texture_under = ExtResource("3_wf6ms")
+texture_progress = ExtResource("4_y1qsn")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 302.0
+offset_bottom = 358.0
+
+[node name="TextField" type="LineEdit" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = -38.0
+offset_right = 218.0
+offset_bottom = -7.0
+grow_vertical = 0
+
+[node name="Container" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.5
+offset_top = -177.0
+offset_right = 136.5
+offset_bottom = 131.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel"]
+texture_filter = 2
+offset_left = 236.0
+offset_top = 322.0
+offset_right = 273.0
+offset_bottom = 354.0
+text = "+"

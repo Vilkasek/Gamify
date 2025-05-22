@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://bctjeyvxgvpa5"]
+
+[ext_resource type="Texture2D" uid="uid://csje2hkth4qlv" path="res://Actors/Player/Mage/Mage0.png" id="1_v1key"]
+[ext_resource type="Texture2D" uid="uid://kvo3v5bx6xis" path="res://Actors/Player/Mage/Mage1.png" id="2_b63gh"]
+[ext_resource type="Texture2D" uid="uid://ck28hcnmspib0" path="res://Actors/Player/Mage/Mage2.png" id="3_n7l8t"]
+
+[sub_resource type="Animation" id="Animation_m4pxt"]
+resource_name = "Moving"
+length = 0.6
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_v1key"), ExtResource("2_b63gh"), ExtResource("3_n7l8t")]
+}
+
+[sub_resource type="Animation" id="Animation_d41x3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_v1key")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8kbm6"]
+_data = {
+&"Moving": SubResource("Animation_m4pxt"),
+&"RESET": SubResource("Animation_d41x3")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v1key"]
+radius = 7.0
+
+[node name="Player" type="Area2D"]
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_v1key")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8kbm6")
+}
+autoplay = "Moving"
+
+[node name="CollBox" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("CircleShape2D_v1key")
