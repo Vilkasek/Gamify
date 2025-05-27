@@ -50,6 +50,7 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="Panel"]
 texture_filter = 2
+layout_mode = 0
 offset_left = 236.0
 offset_top = 322.0
 offset_right = 273.0
